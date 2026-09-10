@@ -1,0 +1,119 @@
+&param
+
+file_names(1) = 'ev_chi'
+file_names(2) = 'ev_grr'
+file_names(3) = 'ev_Arr'
+file_names(4) = 'ev_K'
+file_names(5) = 'ev_Lambdar'
+file_names(6) = 'ev_alpha'
+file_names(7) = 'ev_betar'
+file_names(8) = 'evconstr_Theta'
+
+file_names(9) = 'evkg_rephi'
+file_names(10) = 'evkg_repi'
+file_names(11) = 'evkg_imphi'
+file_names(12) = 'evkg_impi'
+
+file_names(13) = 'evem_Ar'
+file_names(14) = 'evem_Er'
+file_names(15) = 'evem_Phi'
+file_names(16) = 'evem_Psi'
+
+file_names(17) = 'diag_R'
+file_names(18) = 'diag_T'
+
+file_names(19) = 'constr_H'
+file_names(20) = 'constr_Mr'
+file_names(21) = 'constr_Zr'
+file_names(22) = 'constr_Poisson'
+
+file_names(23) = "prop_endens"
+file_names(24) = "prop_eninteg"
+file_names(25) = "prop_msmass"
+file_names(26) = "prop_msmassd"
+file_names(27) = "prop_apparhor"
+file_names(28) = "prop_Vkgfunc"
+
+file_prefix = 'conv_test/potential4_lam100_mu200_m1' ! if a folder is included here but it does not exist in the execution folder, the code will display the error "error: probably quota exceeded!"
+
+parameters%physics%v = 0d0
+parameters%physics%eta = 0.d0
+parameters%physics%lambda = 1d0 !0.5d0  !(Kcmc=-0.3) 0.0075d0 !0.1875 !(Kcmc=-1) 0.08333333333d0 !(Kcmc=-0.5) 0.0208333333333d0 !(Kcmc=-3) 0.75d0 !(Kcmc=-1.2) 0.12d0 !(Kcmc=-0.7) 0.0408333333333d0
+parameters%physics%mu = 0d0
+parameters%physics%aa = -1d0 !5d0 ! for hyperb ! if negative, code calculates value according to Kcmc
+parameters%physics%mass = 0d0
+parameters%physics%masskgf = 1d0
+parameters%physics%cosm = 0.d0 !0.02d0
+parameters%physics%gr = 1 ! 0 (Cowling approximation) or 1 (evolving GR)
+parameters%physics%kgf = 1 !0 or 1
+parameters%physics%em = 0 !0 or 1
+parameters%physics%omt = 1 !0 or 1 ! now being used for one-sided advection terms (omt=1)
+parameters%physics%z4 = 0 !0 or 1
+parameters%physics%z4c = 0 !0 or 1
+parameters%physics%k1 = 1.5d0 !2.5d0
+parameters%physics%k2 = 0d0
+parameters%physics%xscri = 1.0d0
+parameters%physics%xexc = 0.0d0
+parameters%physics%coealphah = 0.7d0 
+parameters%physics%coealphal = 0d0
+parameters%physics%nuplogv = 0d0
+parameters%physics%nconstv = 0d0
+parameters%physics%coebetar = 0d0
+parameters%physics%coeLambdar = 0d0 !0.1d0 
+parameters%physics%coeZr = 0
+parameters%physics%pphi = 0d0 !0.4d0
+parameters%physics%trafK = 0d0
+parameters%physics%Kcmc = -1d0
+parameters%physics%Ccmc = -10d0 ! if negative, code calculates value for trumpet ! 1.2990381056766579701d0 !for Kcmc=0d0 ! 1.7060059980279975935d0 !for Kcmc=-0.3d0
+parameters%physics%Q = 0d0
+parameters%physics%qp = 0d0 !5d0
+parameters%physics%propsign = -1d0 !propagation sign of most of the initial scalar field perturbation: -1 ingoing and +1 outgoing
+
+parameters%timer%t = 0
+parameters%timer%end_time = 20d0
+parameters%slice%h = 1d0 ! 1d0 maintain CFL in convergence, -1d0 rescale for 6th and 8th orders
+parameters%timer%dt = 0.001d0  
+parameters%grid%ncells = 200
+parameters%output%every_t_step = 200 !200
+parameters%output%every_x_step = 1
+parameters%output%suffix = '.dat' !.yg for pygraph and .dat for ygraph and muninn visualization
+
+parameters%moldef%boundary_type = 'gbssn'
+parameters%moldef%stencil_boundary = 'none' !none, left, right or both (where one-sided stencils are applied)
+parameters%moldef%eqsystem = 'nonlinear' !linear or nonlinear
+parameters%moldef%dissipation_eps = 0.25d0 
+parameters%moldef%spatial_order = 'second'
+parameters%moldef%int_method = 'rk4_3'
+parameters%moldef%deriv_method = 'c4'
+
+parameters%id%id_type = 'bh-hypcomp' !bh-hypcomp gbssn-hypcomp !gaussianpert !bh-hypcomp ! currently developping bh-slicing
+!parameters%id%id_type = 'from_data' ! 'from_data' ! 'perturb_relaxed_trumpet'
+parameters%id%noise = 0
+parameters%id%a       = 2d-2 !8d-2 !8.5d-2! 2d-2 !1d-2 !7d-2 !5.5d-2 
+parameters%id%sigma   = 0.1d0 
+parameters%id%center  =  0.25d0 !0.45d0 !0.5d0 
+parameters%id%aim       = 1d-2
+parameters%id%sigmaim   = 0.2d0 
+parameters%id%centerim  = 0.65d0 
+parameters%id%ao       = 0d0 !0.1d0 !0.01d0 !0.1d0 !0.02d0 !8d0  
+parameters%id%sigmao   = 0.15d0 !0.1d0 
+parameters%id%centero  = 0.26d0 !0.3d0 !0.45d0 !0.5d0 
+
+!parameters%slice%h = 0d0
+!parameters%slice%k = 0d0
+parameters%slice%cuplog = 0d0
+parameters%slice%charm = 1d0
+parameters%slice%evollapse = 1 !0 or 1
+parameters%slice%evolshift = 1 !0 or 1
+parameters%slice%rmatchmin = 0.2d0
+parameters%slice%rmatchmax = 0.9d0
+parameters%slice%tvaldiag = 0d0
+parameters%slice%tcol = 7.8d0 ! set to zero if the initial data corresponds to a BH
+
+parameters%grid%nghost = 2
+parameters%grid%xmin = 0.d0 !0.0404309d0 !0.618d0
+parameters%grid%xmax = 1d0
+parameters%grid%fill_type = 'minmax'
+parameters%grid%origin = 'stag' !stag or nostag or misman (stag at the origin and nostag at scri)
+parameters%grid%originbc = 'parity' !parity or extrap
+/
