@@ -1,4 +1,4 @@
-# GR-KG: Massive Scalar Fields and Hyperboloidal Foliations
+# GR-KG: Scalar Fields with a Potential and Hyperboloidal Foliations
 
 This repository is a modified copy of the original *GR-EM-KG* code developed by [Dr. Alex Vañó-Viñuales](https://github.com/alexvanov). It was adopted and used during an internship completed by [Javier Riera](https://github.com/javierriera8) during the summer of 2026, at IAC3 (Institute of Applied Computing and Community Code, Universitat de les Illes Balears).
 
